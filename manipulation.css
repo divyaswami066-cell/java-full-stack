@@ -1,0 +1,21 @@
+img{
+    width: 192px;
+    
+}
+body{
+background-color: antiquewhite;
+}
+#content{
+display: flex;
+gap: 1cm;
+}
+h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    
+    color:purple;
+    
+    border: 3px;
+    border-radius: 25px;
+    border-color: rgb(240, 40, 207);
+}
