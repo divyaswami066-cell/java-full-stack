@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="input.js"></script>
+</head>
+
+<body id="cap">
+
+    <h1 id="Data">Form</h1>
+
+    <h1 id="greet">Good Morning</h1>
+
+    <button onclick="greet_afternoon()">
+        Change Greeting
+    </button>
+
+    <button onclick="change_color()">
+        Theme
+    </button>
+    <h1>Bulb ON/OFF Project</h1>
+
+    <!-- Initial image (OFF bulb) -->
+    <img id="bulb"
+         src="https://cdn.vectorstock.com/i/1000v/70/44/3d-realistic-off-light-bulb-icon-closeup-vector-27407044.jpg"
+         width="250"
+         alt="Bulb">
+
+    <br><br>
+
+    <button onclick="lightOn()">ON</button>
+
+    <button onclick="lightOff()">OFF</button>
+
+    <script>
+
+        let onImage =
+        "https://static.scientificamerican.com/sciam/cache/file/2B38DE31-C1D3-4339-8808D61972976EE4_source.jpg?w=1200";
+
+        let offImage =
+        "https://cdn.vectorstock.com/i/1000v/70/44/3d-realistic-off-light-bulb-icon-closeup-vector-27407044.jpg"
+        function lightOn()
+        {
+            document.getElementById("bulb").src = onImage;
+        }
+
+        function lightOff()
+        {
+            document.getElementById("bulb").src = offImage;
+        }
+
+    </script>
+
+
+</body>
+</html>
