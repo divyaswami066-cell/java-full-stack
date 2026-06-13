@@ -1,0 +1,45 @@
+
+ body {
+  font-family: Georgia, serif;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.row {
+  margin-bottom: 15px;
+}
+
+label {
+  display: inline-block;
+  width: 80px;
+}
+
+label.inline {
+  width: auto;
+  margin-left: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"] {
+  width: 250px;
+  padding: 5px;
+}
+
+input.small {
+  width: 120px;
+}
+
+input.wide {
+  width: 300px;
+}
+
+input[type="color"] {
+  width: 60px;
+  height: 30px;
+  vertical-align: middle;
+}

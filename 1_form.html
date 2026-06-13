@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Responsive form</title>
+<link rel="stylesheet" href="1_form.css">
+</head>
+<body>
+
+<h1>Driving License</h1>
+
+<form>
+  <div class="row">
+    <label>Name:</label>
+    <input type="text" name="name" required>
+  </div>
+
+  <div class="row">
+    <label>Email:</label>
+    <input type="email" name="email" required>
+  </div>
+
+  <div class="row">
+    <label>Phone no:</label>
+    <input type="number" name="phone" required>
+  </div>
+
+  <div class="row">
+    <label>D.O.B:</label>
+    <input type="date" name="dob" required>
+    <label class="inline">Color:</label>
+    <input type="color" name="color" value="#0000ff">
+    <label class="inline">Age:</label>
+    <input type="text" name="age" class="small">
+  </div>
+
+  <div class="row">
+    Gender:
+    <input type="radio" name="gender" value="male"> male
+    <input type="radio" name="gender" value="female"> female
+    <input type="radio" name="gender" value="na"> Not to mention
+  </div>
+
+  <div class="row">
+    Verified:
+    <input type="checkbox" name="rc"> RC
+    <input type="checkbox" name="insurance"> Insurance
+    <input type="checkbox" name="pollution"> Pollution Control
+  </div>
+
+  <div class="row">
+    <label>Address:</label>
+    <input type="text" name="address" class="wide">
+  </div>
+
+  <div class="row">
+    Photo <input type="file" name="photo">
+  </div>
+
+  <div class="row">
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
+<h2>License Details</h2>
+
+<script src="1_form.js"></script>
+</body>
+</html>
