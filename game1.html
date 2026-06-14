@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Collector Game</title>
+
+    <!-- CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        #score {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        #gameContainer {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            background: white;
+            border: 3px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #player {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FF6B9D;
+            border-radius: 3px;
+            left: 100px;
+            top: 100px;
+            transition: background 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #player:hover {
+            background: #FF5A8A;
+        }
+
+        #candy {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FFD700;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #candy:hover {
+            background: #FFA500;
+            transform: scale(1.2);
+        }
+
+        .instructions {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML -->
+    <h1>🍭 Candy Collector 🍭</h1>
+    <p id="score">Score: 0</p>
+    <div id="gameContainer">
+        <div id="player"></div>
+        <div id="candy"></div>
+    </div>
+    <div class="instructions">
+        <p>Use arrow keys to move the pink box and collect candy!</p>
+        <p>Each candy collected increases your score.</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Game Variables
+        let x = 100;
+        let y = 100;
+        const step = 10;
+        let score = 0;
+        let candyX = 300;
+        let candyY = 150;
+        const playerSize = 20;
+        const gameWidth = 600;
+        const gameHeight = 400;
+
+        // Get DOM elements
+        const player = document.getElementById('player');
+        const candy = document.getElementById('candy');
+        const scoreDisplay = document.getElementById('score');
+
+        // Function to update player position on screen
+        function updatePlayerPosition() {
+            player.style.left = x + 'px';
+            player.style.top = y + 'px';
+        }
+
+        // Function to update candy position on screen
+        function updateCandyPosition() {
+            candy.style.left = candyX + 'px';
+            candy.style.top = candyY + 'px';
+        }
+
+        // Function to place candy at random location
+        function spawnCandy() {
+            candyX = Math.random() * (gameWidth - playerSize);
+            candyY = Math.random() * (gameHeight - playerSize);
+            updateCandyPosition();
+        }
+
+        // Function to check collision between player and candy
+        function checkCollision() {
+            const distance = Math.sqrt(
+                Math.pow(x - candyX, 2) + Math.pow(y - candyY, 2)
+            );
+
+            if (distance < playerSize + 10) {
+                score++;
+                scoreDisplay.textContent = 'Score: ' + score;
+                spawnCandy();
+            }
+        }
+
+        // Function to keep player within game boundaries
+        function keepInBounds() {
+            if (x < 0) x = 0;
+            if (x > gameWidth - playerSize) x = gameWidth - playerSize;
+            if (y < 0) y = 0;
+            if (y > gameHeight - playerSize) y = gameHeight - playerSize;
+        }
+
+        // Listen for keyboard input
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowUp') {
+                y -= step;
+            } else if (event.key === 'ArrowDown') {
+                y += step;
+            } else if (event.key === 'ArrowLeft') {
+                x -= step;
+            } else if (event.key === 'ArrowRight') {
+                x += step;
+            }
+
+            keepInBounds();
+            updatePlayerPosition();
+            checkCollision();
+        });
+
+        // Initialize game
+        updatePlayerPosition();
+        spawnCandy();
+    </script>
+</body>
+</html>
